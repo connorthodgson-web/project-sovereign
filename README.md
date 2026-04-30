@@ -4,7 +4,7 @@ Project Sovereign is a backend-first operator scaffold built around a clean orch
 
 `Supervisor -> Planner -> Router -> Agent`
 
-The current implementation now supports a real first-pass operator loop while staying explicit about what is still only planned, simulated, or blocked.
+This current implementation now supports a real first-pass operator loop while staying explicit about what is still only planned, simulated, or blocked.
 
 ## What Works Now
 
