@@ -14,7 +14,7 @@ local edit
 -> fix locally and push again
 ```
 
-GitHub is the source of truth. Codex, Cursor, and VS Code may edit files locally, but they should not create uncontrolled commits or push secrets. The safe path is: edit, inspect the diff, run tests, commit, push, and let the configured deployment systems update the live product.
+GitHub is the source of truth at `connorthodgson-web/project-sovereign`. Codex, Cursor, and VS Code may edit files locally, but they should not create uncontrolled commits or push secrets. The safe path is: edit, inspect the diff, run tests, commit, push, and let the configured deployment systems update the live product.
 
 ## Intended Workflow
 
@@ -57,7 +57,8 @@ Vercel owns the dashboard deployment from `frontend/`.
 - Install command: `npm ci`
 - Build command: `npm run build`
 - Output directory: `dist`
-- Required env var: `VITE_SOVEREIGN_API_URL=https://your-backend-domain.example`
+- Required env var for current VPS testing: `VITE_SOVEREIGN_API_URL=http://187.124.213.208:8000`
+- Future HTTPS value: `VITE_SOVEREIGN_API_URL=https://your-backend-domain.example`
 
 Preview deployments come from branches or pull requests. Production deployments come from `main`.
 
@@ -79,6 +80,8 @@ The VPS runs the always-on product backend:
 - Slack worker: `python -m app.slack_main`
 - Scheduler/reminder runtime: enabled inside the backend/worker configuration through `.env`
 - Tool integrations: configured through VPS `.env` and files under `secrets/`, never through Git
+
+The VPS should not be treated as the first heavy browser runtime. Browser-use and Playwright should prefer a future home-computer remote worker, while the VPS remains the always-on CEO/backend and lightweight execution host.
 
 ### 7. Shared Operator Path
 
@@ -147,15 +150,18 @@ journalctl -u sovereign-worker.service -n 100 --no-pager
 - Backend deploy and frontend check workflows exist.
 - `scripts/deploy_backend.sh` and `scripts/health_check.py` exist.
 - Dashboard mock data is visibly labeled as mock fallback.
+- GitHub repo is live at `connorthodgson-web/project-sovereign`.
+- Vercel frontend is deployed.
+- VPS clone exists at `/opt/project-sovereign`.
+- Backend systemd service is running.
+- Slack worker systemd service is created.
+- GitHub Actions backend auto-deploy is working with a green check.
 
-### Scaffolded But Requires Manual Configuration
+### Requires Live Configuration Or Manual Testing
 
-- GitHub remote/repository creation.
-- Vercel project connection and `VITE_SOVEREIGN_API_URL`.
-- VPS clone at `/opt/project-sovereign`.
 - VPS `.env` with provider keys, Slack tokens, CORS origin, and integration flags.
-- systemd services for backend and Slack worker.
-- GitHub repository secrets: `VPS_HOST`, `VPS_USER`, `VPS_SSH_KEY`, `VPS_PROJECT_PATH`.
+- Vercel `VITE_SOVEREIGN_API_URL=http://187.124.213.208:8000`, or the future HTTPS backend domain.
+- Manual dashboard chat, Slack DM, reminders, and memory recall testing.
 - DNS/TLS/reverse proxy for a production backend domain.
 
 ### Missing Or Future Work
@@ -164,6 +170,7 @@ journalctl -u sovereign-worker.service -n 100 --no-pager
 - Durable production memory choice, such as Supabase or Zep.
 - iOS client implementation.
 - Live browser stream in the dashboard.
+- Remote home-computer browser worker.
 - More complete integration setup UIs.
 - Secret manager integration beyond filesystem/env conventions.
 

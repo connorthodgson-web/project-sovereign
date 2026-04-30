@@ -13,13 +13,14 @@ Project Sovereign should evolve as a personal AI hub: one CEO/operator brain, ma
 ## Add A New Tool Or Integration
 
 1. Add provider settings to `app/config.py` and `.env.example` with blank secret values.
-2. Put provider-specific code under `integrations/` or `tools/`.
-3. Keep credentials in VPS `.env` or `secrets/`, not Git.
-4. Expose readiness through the existing integration readiness surface.
-5. Add a tool/agent contract that returns structured evidence or an honest blocker.
-6. Let the supervisor/planner decide when to use the tool through capability metadata and LLM-led orchestration.
-7. Add tests for disabled, misconfigured, and successful paths.
-8. Add manual testing steps to `docs/MANUAL_TESTING.md` if the integration changes product behavior.
+2. Add VPS production placeholders to `env/vps.env.template` only when they are safe, blank, and useful for copy/paste setup.
+3. Put provider-specific code under `integrations/` or `tools/`.
+4. Keep credentials in VPS `.env`, GitHub/Vercel secrets, or `secrets/`, not Git.
+5. Expose readiness through the existing integration readiness surface.
+6. Add a tool/agent contract that returns structured evidence or an honest blocker.
+7. Let the supervisor/planner decide when to use the tool through capability metadata and LLM-led orchestration.
+8. Add tests for disabled, misconfigured, and successful paths.
+9. Add manual testing steps to `docs/MANUAL_TESTING.md` if the integration changes product behavior.
 
 Avoid hardcoding broad Python routing like "if user says X, always call tool Y" as the main intelligence layer. Deterministic code is appropriate for adapters, validation, parsing, retries, safety gates, and fallback behavior.
 
@@ -35,6 +36,22 @@ Avoid hardcoding broad Python routing like "if user says X, always call tool Y" 
 8. Manually test both live API and offline fallback.
 
 The dashboard can show workstreams, evidence, memory summaries, reminders, integrations, and future browser views. It should not make its own separate decisions about user goals.
+
+## Add Browser Automation
+
+The VPS should not be the first assumed heavy browser runtime. Prefer this shape:
+
+```text
+Slack/dashboard
+-> VPS CEO/backend
+-> browser job
+-> home-computer browser worker
+-> screenshot/result/blocker evidence
+-> VPS CEO review
+-> user response
+```
+
+Keep `BROWSER_ENABLED=false` on the VPS until the selected runtime is tested. Remote browser readiness should include worker auth, screenshot evidence, honest CAPTCHA/2FA escalation, and clear failure states.
 
 ## Add A New Client Like iOS
 

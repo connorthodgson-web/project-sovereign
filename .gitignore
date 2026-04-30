@@ -3,6 +3,9 @@
 .env.*
 .envz
 !.env.example
+env/*.env
+env/*.local
+!env/*.template
 secrets/
 .secrets/
 secrets/*.json

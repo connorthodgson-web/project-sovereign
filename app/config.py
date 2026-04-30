@@ -34,7 +34,9 @@ class Settings(BaseSettings):
     frontier_model_name: str | None = None
     openai_enabled: bool = False
     openai_api_key: str | None = None
+    openai_model_tier: int | None = None
     openai_model_tier_3: str | None = None
+    escalation_enabled: bool = True
     openai_agents_enabled: bool = False
     openai_agents_api_key: str | None = None
     manus_enabled: bool = False
@@ -53,7 +55,9 @@ class Settings(BaseSettings):
     retrieval_api_key: str | None = None
     embeddings_model: str | None = None
     search_enabled: bool = False
+    web_search_enabled: bool = False
     search_provider: str | None = None
+    search_api_key: str | None = None
     search_timeout_seconds: int = 30
     gemini_search_model: str = "google/gemini-2.5-flash"
     memory_provider: str = "local"
@@ -89,6 +93,9 @@ class Settings(BaseSettings):
     browser_show_window: bool = False
     browser_base_url: str | None = None
     browser_save_screenshots: str = "on_failure"
+    browser_worker_mode: str | None = None
+    browser_worker_url: str | None = None
+    browser_worker_shared_secret: str | None = None
     email_enabled: bool = False
     email_provider: str | None = None
     email_api_key: str | None = None
@@ -111,6 +118,7 @@ class Settings(BaseSettings):
     google_tasks_credentials_path: str = "secrets/google_tasks_credentials.json"
     google_tasks_token_path: str = "secrets/google_tasks_token.json"
     google_tasks_scopes: str = "https://www.googleapis.com/auth/tasks"
+    google_tasks_list_study: str | None = None
     google_tasks_list_id: str = "@default"
     reminders_enabled: bool = False
     scheduler_backend: str | None = None

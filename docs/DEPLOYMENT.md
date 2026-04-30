@@ -29,10 +29,14 @@ The API exposes:
 
 ## Required Backend Environment
 
-Set these on the VPS, not in git:
+Set these on the VPS, not in Git. Start from `env/vps.env.template`, paste it into `/opt/project-sovereign/.env`, then fill only the live values needed for the current test pass.
 
 ```bash
+OPENAI_ENABLED=true
+OPENAI_API_KEY=
+OPENAI_MODEL_TIER=3
 OPENROUTER_API_KEY=
+ESCALATION_ENABLED=true
 SLACK_BOT_TOKEN=
 SLACK_APP_TOKEN=
 SLACK_SIGNING_SECRET=
@@ -46,12 +50,16 @@ Optional integrations remain disabled until configured:
 
 ```bash
 BROWSER_ENABLED=false
+BROWSER_BACKEND_MODE=remote_worker
 BROWSER_USE_ENABLED=false
+CODEX_CLI_ENABLED=false
 GMAIL_ENABLED=false
 GOOGLE_CALENDAR_ENABLED=false
 GOOGLE_TASKS_ENABLED=false
 MEMORY_PROVIDER=local
 ```
+
+Heavy browser execution should not be assumed on the VPS. The preferred future architecture is VPS CEO/backend delegating browser jobs to a trusted home-computer worker.
 
 ## VPS Systemd Service
 
@@ -128,6 +136,8 @@ SOVEREIGN_DEPLOY_TEST_COMMAND="python -m pytest tests/test_shared_transport.py t
 
 ## GitHub Actions Backend Deploy
 
+The GitHub repository is live at `connorthodgson-web/project-sovereign`, and the backend auto-deploy workflow is expected to keep the VPS clone at `/opt/project-sovereign` current after pushes to `main`.
+
 The backend deploy workflow expects these GitHub repository secrets:
 
 ```text
@@ -154,6 +164,8 @@ journalctl -u sovereign-worker.service -n 100 --no-pager
 
 ## Frontend on Vercel
 
+The Vercel frontend is deployed from `frontend/`. Dashboard chat should use the same backend `/chat` path as Slack.
+
 Vercel settings:
 
 - Framework preset: Vite
@@ -165,8 +177,10 @@ Vercel settings:
 Set this Vercel environment variable:
 
 ```text
-VITE_SOVEREIGN_API_URL=https://your-backend-domain.example
+VITE_SOVEREIGN_API_URL=http://187.124.213.208:8000
 ```
+
+Use the future HTTPS backend domain here once DNS/TLS are ready.
 
 For local frontend development, Vite proxies `/api` to `http://127.0.0.1:8000`.
 For deployed frontend calls, the backend `CORS_ALLOWED_ORIGINS` value must include the Vercel app origin.

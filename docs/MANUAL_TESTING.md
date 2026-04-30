@@ -2,6 +2,12 @@
 
 Use this checklist before and after deployment changes.
 
+Current production-test shape:
+
+- Vercel dashboard and Slack DM should both reach the same `/chat -> core.transport -> supervisor` path.
+- VPS owns the backend API, Slack worker, scheduler/reminders, API, memory, and lightweight research/search.
+- Heavy browser automation should stay disabled on the VPS until explicitly tested; future browser-use/Playwright execution should prefer a home-computer worker.
+
 ## 1. Backend Health Check
 
 ```bash
@@ -143,6 +149,12 @@ Frontend:
 3. Confirm Vercel builds the `frontend/` app.
 4. Confirm the deployed dashboard points at `VITE_SOVEREIGN_API_URL`.
 
+Expected Vercel value for the current VPS test:
+
+```text
+VITE_SOVEREIGN_API_URL=http://187.124.213.208:8000
+```
+
 Backend:
 
 1. Make a harmless backend change.
@@ -156,6 +168,15 @@ Expected GitHub Actions behavior:
 
 - Success means the VPS pulled `main`, installed dependencies, ran the deployment test command, restarted `sovereign-backend.service` and `sovereign-worker.service`, and passed `/health`.
 - Failure means the live backend may still be running the previous version. Inspect GitHub Actions logs first, then `journalctl` on the VPS.
+
+VPS env changes are manual. Edit and restart with:
+
+```bash
+nano /opt/project-sovereign/.env
+systemctl restart sovereign-backend.service
+systemctl restart sovereign-worker.service
+python /opt/project-sovereign/scripts/health_check.py --url http://127.0.0.1:8000/health
+```
 
 ## 9. Regression Checklist After Each Bug Fix
 

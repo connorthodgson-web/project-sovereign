@@ -33,26 +33,14 @@ If you want to move the unrelated local project before the first push:
 Move-Item -LiteralPath "C:\Users\conno\project-sovereign\Chess Engine" -Destination "C:\Users\conno\Chess Engine"
 ```
 
-## B. Create GitHub Repo
+## B. GitHub Repo
 
-From `C:\Users\conno\project-sovereign`:
+Current state: the GitHub repo is live at `connorthodgson-web/project-sovereign`. Use this section only if the remote needs to be checked or repaired.
 
 ```bash
 git status --short
-git diff
-git add .gitignore .env.example .github docs scripts app api core agents integrations memory prompts tests tools workers frontend requirements.txt pyproject.toml README.md AGENTS.md
-git status --short
-git commit -m "Prepare Sovereign real product workflow"
-git branch -M main
-git remote add origin git@github.com:<your-user-or-org>/project-sovereign.git
-git push -u origin main
-```
-
-If `origin` already exists:
-
-```bash
 git remote -v
-git remote set-url origin git@github.com:<your-user-or-org>/project-sovereign.git
+git branch --show-current
 git push -u origin main
 ```
 
@@ -67,11 +55,13 @@ Create a Vercel project from the GitHub repo.
 - Output directory: `dist`
 - Production branch: `main`
 
-Set environment variable:
+Current state: the Vercel frontend is deployed. Confirm this environment variable is set:
 
 ```text
-VITE_SOVEREIGN_API_URL=https://your-backend-domain.example
+VITE_SOVEREIGN_API_URL=http://187.124.213.208:8000
 ```
+
+Use the future HTTPS backend domain after DNS/TLS are ready.
 
 Confirm:
 
@@ -83,7 +73,9 @@ Confirm:
 
 ## D. Prepare VPS
 
-On the VPS:
+Current state: the VPS is cloned at `/opt/project-sovereign`, the backend systemd service is running, the Slack worker service is created, and GitHub Actions backend auto-deploy has a green check. Use this section for verification or rebuilds.
+
+For a fresh VPS only:
 
 ```bash
 sudo adduser --system --group --home /opt/project-sovereign sovereign
@@ -99,25 +91,26 @@ sudo -u sovereign venv/bin/python -m pip install -r requirements.txt
 Create `/opt/project-sovereign/.env` on the VPS:
 
 ```bash
-sudo -u sovereign nano /opt/project-sovereign/.env
+nano /opt/project-sovereign/.env
 ```
 
-Minimum useful values:
+Paste `env/vps.env.template`, then fill the initial live values. Minimum useful values:
 
 ```text
-APP_NAME=Project Sovereign
-ENVIRONMENT=production
-WORKSPACE_ROOT=/opt/project-sovereign/workspace
-CORS_ALLOWED_ORIGINS=https://your-vercel-app.vercel.app
-OPENROUTER_API_KEY=...
+CORS_ALLOWED_ORIGINS=https://YOUR_REAL_VERCEL_URL
+OPENAI_ENABLED=true
+OPENAI_API_KEY=...
 SLACK_BOT_TOKEN=...
 SLACK_APP_TOKEN=...
 SLACK_SIGNING_SECRET=...
 REMINDERS_ENABLED=true
 SCHEDULER_BACKEND=apscheduler
 SCHEDULER_TIMEZONE=America/New_York
+MEMORY_BACKEND=local
 MEMORY_PROVIDER=local
 ```
+
+Do not paste Windows `C:\...` paths into the VPS env. Linux paths must use `/opt/project-sovereign/...`.
 
 Create `/etc/systemd/system/sovereign-backend.service`:
 
@@ -174,8 +167,7 @@ Check logs and health:
 ```bash
 journalctl -u sovereign-backend.service -n 100 --no-pager
 journalctl -u sovereign-worker.service -n 100 --no-pager
-cd /opt/project-sovereign
-venv/bin/python scripts/health_check.py --url http://127.0.0.1:8000/health
+python /opt/project-sovereign/scripts/health_check.py --url http://127.0.0.1:8000/health
 ```
 
 ## E. Configure GitHub Actions Deploy
@@ -196,7 +188,7 @@ git commit --allow-empty -m "Test backend deploy"
 git push origin main
 ```
 
-In GitHub Actions:
+Current state: GitHub Actions backend auto-deploy is working with a green check. In GitHub Actions:
 
 - `Backend Deploy` should run for backend/deploy path changes.
 - The SSH step should run `scripts/deploy_backend.sh`.
@@ -205,12 +197,14 @@ In GitHub Actions:
 - systemd services should restart.
 - Health check should pass.
 
+Do not store `.env` values in GitHub Actions unless they are deployment-level secrets required by the workflow. Runtime API keys stay in `/opt/project-sovereign/.env` or an approved secret manager.
+
 ## F. Manual Product Test
 
 - Health:
 
 ```bash
-python scripts/health_check.py --url https://your-backend-domain.example/health
+python /opt/project-sovereign/scripts/health_check.py --url http://127.0.0.1:8000/health
 ```
 
 - Slack:
