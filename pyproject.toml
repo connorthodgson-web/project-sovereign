@@ -1,0 +1,34 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "project-sovereign"
+version = "0.1.0"
+description = "Backend scaffold for a supervisor-driven autonomous AI operator."
+readme = "README.md"
+requires-python = ">=3.11"
+dependencies = [
+    "fastapi>=0.116.0",
+    "uvicorn[standard]>=0.35.0",
+    "pydantic>=2.11.0",
+    "pydantic-settings>=2.10.0",
+    "httpx>=0.28.0",
+    "playwright>=1.54.0",
+    "browser-use-sdk>=3.4.0",
+    "langgraph>=0.2.0",
+    "slack-bolt>=1.23.0",
+    "APScheduler>=3.10.4",
+    "zep-cloud>=3.20.0",
+    "chromadb>=1.0.0",
+    "pytest>=9.0.0",
+    "google-api-python-client>=2.170.0",
+    "google-auth-httplib2>=0.2.0",
+    "google-auth-oauthlib>=1.2.0",
+]
+
+[project.scripts]
+sovereign-slack = "app.slack_main:main"
+
+[tool.setuptools]
+include-package-data = true

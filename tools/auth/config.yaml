@@ -1,0 +1,46 @@
+enabled: false
+status: "not_configured"
+provider: ""
+default_identity: ""
+notes: ""
+
+shared_credentials:
+  username: ""
+  email: ""
+  password: ""
+  phone_number: ""
+  two_factor_method: ""
+  two_factor_backup_codes: []
+  recovery_email: ""
+  recovery_phone: ""
+
+oauth_defaults:
+  client_id: ""
+  client_secret: ""
+  access_token: ""
+  refresh_token: ""
+  token_url: ""
+  authorize_url: ""
+  callback_url: ""
+  scopes: []
+
+session_defaults:
+  cookie_string: ""
+  session_token: ""
+  csrf_token: ""
+  id_token: ""
+  state: ""
+
+service_accounts:
+  account_name: ""
+  account_email: ""
+  private_key: ""
+  private_key_id: ""
+  project_id: ""
+  tenant_id: ""
+
+allowed_redirect_hosts: []
+metadata:
+  owner: ""
+  created_for: "future tool integrations"
+  last_updated: ""

@@ -1,0 +1,65 @@
+enabled: false
+status: "not_configured"
+provider: "playwright"
+notes: ""
+
+browser_defaults:
+  browser_type: "chromium"
+  headless: true
+  slow_mo_ms: 0
+  timeout_ms: 30000
+  navigation_timeout_ms: 45000
+  viewport_width: 1440
+  viewport_height: 900
+  locale: "en-US"
+  timezone: "America/New_York"
+  user_agent: ""
+  accept_downloads: true
+  ignore_https_errors: false
+
+playwright:
+  enabled: false
+  channel: ""
+  executable_path: ""
+  storage_state_path: "tools/browser/storage_state.json"
+  traces_dir: "workspace/browser/traces"
+  screenshots_dir: "workspace/browser/screenshots"
+  videos_dir: "workspace/browser/videos"
+  downloads_dir: "workspace/browser/downloads"
+  base_url: ""
+  launch_args: []
+
+session:
+  persist_session: true
+  session_name: "default"
+  cookie_file: "tools/browser/cookies.json"
+  storage_state_file: "tools/browser/storage_state.json"
+  profile_dir: "workspace/browser/profile"
+  login_url: ""
+  username: ""
+  email: ""
+  password: ""
+  otp_secret: ""
+
+proxy:
+  enabled: false
+  server: ""
+  username: ""
+  password: ""
+  bypass: []
+
+remote_browser:
+  ws_endpoint: ""
+  http_endpoint: ""
+  api_key: ""
+
+captcha:
+  provider: ""
+  api_key: ""
+  enabled: false
+
+evidence_defaults:
+  take_screenshots: true
+  save_html: false
+  save_pdf: false
+  save_video: false

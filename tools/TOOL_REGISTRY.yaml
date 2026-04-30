@@ -1,0 +1,107 @@
+auth:
+  enabled: false
+  purpose: "Shared credentials, OAuth apps, callback URLs, and identity settings."
+  status: "not_configured"
+  priority: "high"
+  config_path: "tools/auth/config.yaml"
+  notes_path: "tools/auth/notes.md"
+  notes: "Fill this early so future providers can reuse the same auth values."
+
+browser:
+  enabled: false
+  purpose: "Website automation, browser sessions, Playwright defaults, and proxy setup."
+  status: "not_configured"
+  priority: "high"
+  config_path: "tools/browser/config.yaml"
+  notes_path: "tools/browser/notes.md"
+  notes: "Use for browser-use, Playwright, session persistence, and site login prep."
+
+calendar:
+  enabled: false
+  purpose: "Calendar provider credentials, OAuth tokens, and scheduling settings."
+  status: "not_configured"
+  priority: "high"
+  config_path: "tools/calendar/config.yaml"
+  notes_path: "tools/calendar/notes.md"
+  notes: "Google Calendar and Microsoft Graph belong here."
+
+coding:
+  enabled: false
+  purpose: "Git hosting, package registry, CI/CD, and repository access credentials."
+  status: "not_configured"
+  priority: "high"
+  config_path: "tools/coding/config.yaml"
+  notes_path: "tools/coding/notes.md"
+  notes: "GitHub token and repo defaults should usually be added early."
+
+email:
+  enabled: false
+  purpose: "SMTP, transactional email APIs, sender identities, and inbound/outbound hooks."
+  status: "not_configured"
+  priority: "high"
+  config_path: "tools/email/config.yaml"
+  notes_path: "tools/email/notes.md"
+  notes: "Supports both SMTP credentials and API-style providers."
+
+files:
+  enabled: false
+  purpose: "Local storage paths, cloud buckets, document APIs, and upload targets."
+  status: "not_configured"
+  priority: "medium"
+  config_path: "tools/files/config.yaml"
+  notes_path: "tools/files/notes.md"
+  notes: "Use for drive integrations, buckets, and shared workspace paths."
+
+llm:
+  enabled: false
+  purpose: "LLM providers, API keys, default models, routing preferences, and fallbacks."
+  status: "not_configured"
+  priority: "critical"
+  config_path: "tools/llm/config.yaml"
+  notes_path: "tools/llm/notes.md"
+  notes: "This is the main model control panel for future orchestration."
+
+memory:
+  enabled: false
+  purpose: "Memory and persistence systems such as Supabase, embeddings, and vector DBs."
+  status: "not_configured"
+  priority: "high"
+  config_path: "tools/memory/config.yaml"
+  notes_path: "tools/memory/notes.md"
+  notes: "Prepared for long-term memory, run logs, and retrieval systems."
+
+messaging:
+  enabled: false
+  purpose: "SMS, Slack, chat platforms, bot tokens, webhooks, and notification channels."
+  status: "not_configured"
+  priority: "high"
+  config_path: "tools/messaging/config.yaml"
+  notes_path: "tools/messaging/notes.md"
+  notes: "Includes Twilio, Slack, Telegram, Discord, and WhatsApp-style channels."
+
+misc:
+  enabled: false
+  purpose: "Overflow category for extra services, experiments, and one-off providers."
+  status: "not_configured"
+  priority: "low"
+  config_path: "tools/misc/config.yaml"
+  notes_path: "tools/misc/notes.md"
+  notes: "Use only when a service does not clearly belong somewhere else."
+
+search:
+  enabled: false
+  purpose: "Search APIs, SERP providers, scraping/search credentials, and indexing setup."
+  status: "not_configured"
+  priority: "medium"
+  config_path: "tools/search/config.yaml"
+  notes_path: "tools/search/notes.md"
+  notes: "Prepared for web search, SERP APIs, and internal indexing providers."
+
+voice:
+  enabled: false
+  purpose: "Voice agents, telephony, STT/TTS providers, and call routing setup."
+  status: "not_configured"
+  priority: "medium"
+  config_path: "tools/voice/config.yaml"
+  notes_path: "tools/voice/notes.md"
+  notes: "Prepared for Vapi, Twilio Voice, Deepgram, ElevenLabs, and similar services."

@@ -1,0 +1,42 @@
+enabled: false
+status: "not_configured"
+provider: "supabase"
+notes: ""
+
+supabase:
+  enabled: false
+  project_url: ""
+  anon_key: ""
+  service_role_key: ""
+  database_url: ""
+  project_ref: ""
+  jwt_secret: ""
+  storage_bucket: ""
+
+vector_db:
+  provider: ""
+  api_key: ""
+  url: ""
+  index_name: ""
+  namespace: ""
+  environment: ""
+
+embeddings:
+  provider: ""
+  api_key: ""
+  model: ""
+  dimensions: 0
+
+memory_defaults:
+  session_table: "session_memory"
+  long_term_table: "long_term_memory"
+  runs_table: "run_history"
+  artifacts_table: "artifacts"
+  max_context_items: 25
+  auto_save: true
+
+redis_cache:
+  enabled: false
+  url: ""
+  password: ""
+  ttl_seconds: 3600

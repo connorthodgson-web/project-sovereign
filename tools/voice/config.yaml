@@ -1,0 +1,43 @@
+enabled: false
+status: "not_configured"
+provider: "vapi"
+notes: ""
+
+vapi:
+  enabled: false
+  api_key: ""
+  assistant_id: ""
+  phone_number_id: ""
+  webhook_url: ""
+
+twilio_voice:
+  enabled: false
+  account_sid: ""
+  auth_token: ""
+  api_key: ""
+  api_secret: ""
+  from_phone_number: ""
+  status_callback_url: ""
+  twiml_app_sid: ""
+
+speech_to_text:
+  provider: "deepgram"
+  enabled: false
+  api_key: ""
+  model: ""
+  language: "en"
+  endpoint: ""
+
+text_to_speech:
+  provider: "elevenlabs"
+  enabled: false
+  api_key: ""
+  voice_id: ""
+  model_id: ""
+  output_format: ""
+
+call_defaults:
+  record_calls: false
+  transcribe_calls: true
+  save_recordings_dir: "workspace/voice/recordings"
+  save_transcripts_dir: "workspace/voice/transcripts"

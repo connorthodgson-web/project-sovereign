@@ -1,0 +1,1 @@
+This document outlines the architecture of the modular operator system, detailing each component and its purpose.

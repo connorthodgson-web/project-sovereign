@@ -1,0 +1,46 @@
+enabled: false
+status: "not_configured"
+provider: "github"
+notes: ""
+
+github:
+  enabled: false
+  token: ""
+  fine_grained_token: ""
+  app_id: ""
+  app_private_key: ""
+  webhook_secret: ""
+  username: ""
+  email: ""
+  default_org: ""
+  default_repo: ""
+  default_branch: "main"
+  repo_urls: []
+
+git:
+  ssh_private_key: ""
+  ssh_public_key: ""
+  personal_access_token: ""
+  username: ""
+  email: ""
+  signing_key: ""
+
+package_registries:
+  npm_token: ""
+  pypi_token: ""
+  dockerhub_username: ""
+  dockerhub_password: ""
+  ghcr_token: ""
+
+ci_cd:
+  provider: ""
+  api_key: ""
+  project_id: ""
+  org_id: ""
+  webhook_url: ""
+  environment_name: ""
+
+code_hosts:
+  gitlab_token: ""
+  bitbucket_username: ""
+  bitbucket_app_password: ""

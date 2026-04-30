@@ -1,0 +1,2 @@
+"""Search provider integration layer."""
+

@@ -1,0 +1,12 @@
+# Example Domain Summary
+
+URL opened: https://example.com/
+Page title: Example Domain
+
+Summary:
+Example Domain is a documentation example site. It says the domain may be used in examples without needing permission and should be avoided for operational use. It also includes a “Learn more” link.
+
+Source evidence:
+- Final URL: https://example.com/
+- Heading: Example Domain
+- Page text preview: Example Domain This domain is for use in documentation examples without needing permission. Avoid use in operations. Learn more

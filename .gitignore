@@ -1,0 +1,75 @@
+# Local environment and secrets
+.env
+.env.*
+.envz
+!.env.example
+secrets/
+.secrets/
+secrets/*.json
+.secrets/*.json
+**/gmail_credentials.json
+**/gmail_token.json
+**/google_client_secret.json
+**/google_tasks_token.json
+**/credentials.json
+**/token.json
+
+# Python
+venv/
+.venv/
+__pycache__/
+**/__pycache__/
+*.py[cod]
+*$py.class
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+
+# Logs, caches, and generated artifacts
+logs/
+log/
+*.log
+pytest*.log
+artifacts/
+cache/
+.cache/
+tmp/
+temp/
+*.pid
+
+# Browser and runtime artifacts
+screenshots/
+browser_artifacts/
+**/browser_artifacts/
+workspace/.sovereign/browser_artifacts/
+workspace/.sovereign/
+workspace/browser_artifacts/
+workspace/created_items/browser/
+workspace/behavioral_smoke_*.json
+workspace/tmp_*.json
+workspace/workspace/
+workspace/**/*.log
+workspace/**/*.pid
+
+# Frontend dependencies and build output
+node_modules/
+dist/
+build/
+.vite/
+*.tsbuildinfo
+frontend/node_modules/
+frontend/dist/
+frontend/build/
+frontend/.vite/
+
+# OS/editor noise
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+.cursor/
+
+# Unrelated local project kept out of the Sovereign source tree.
+Chess Engine/

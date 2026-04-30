@@ -1,0 +1,48 @@
+version: "3"
+
+tasks:
+  setup:
+    desc: Install Python dependencies and Playwright Chromium into the local venv.
+    cmds:
+      - .\venv\Scripts\python.exe -m pip install -r requirements.txt
+      - .\venv\Scripts\python.exe -m playwright install chromium
+
+  dev:
+    desc: Run the FastAPI dev server.
+    cmds:
+      - .\venv\Scripts\python.exe -m uvicorn app.main:app --reload --host 127.0.0.1 --port 8000
+
+  test:
+    desc: Run the full pytest suite.
+    cmds:
+      - .\venv\Scripts\python.exe -m pytest
+
+  test-fast:
+    desc: Run fast local regression coverage for routing, model routing, and reminders.
+    cmds:
+      - .\venv\Scripts\python.exe -m pytest tests\test_routing_stabilization.py tests\test_model_routing.py tests\test_reminders.py
+
+  test-routing:
+    desc: Run routing stabilization and model routing coverage.
+    cmds:
+      - .\venv\Scripts\python.exe -m pytest tests\test_routing_stabilization.py tests\test_model_routing.py
+
+  test-browser:
+    desc: Run targeted browser execution coverage.
+    cmds:
+      - .\venv\Scripts\python.exe -m pytest tests\test_browser_execution.py
+
+  test-codex:
+    desc: Run targeted Codex CLI agent coverage.
+    cmds:
+      - .\venv\Scripts\python.exe -m pytest tests\test_codex_cli_agent.py
+
+  check-codex:
+    desc: Diagnose the local Codex CLI command without running Sovereign coding work.
+    cmds:
+      - .\venv\Scripts\python.exe scripts\doctor.py --codex-only
+
+  doctor:
+    desc: Check the local dev/test runtime, browser runtime, and key env wiring.
+    cmds:
+      - .\venv\Scripts\python.exe scripts\doctor.py

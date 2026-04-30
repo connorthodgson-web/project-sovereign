@@ -1,0 +1,37 @@
+enabled: false
+status: "not_configured"
+provider: ""
+notes: ""
+
+service_one:
+  name: ""
+  enabled: false
+  api_key: ""
+  api_secret: ""
+  username: ""
+  password: ""
+  base_url: ""
+  webhook_url: ""
+
+service_two:
+  name: ""
+  enabled: false
+  api_key: ""
+  access_token: ""
+  refresh_token: ""
+  account_id: ""
+  workspace_id: ""
+  callback_url: ""
+
+service_three:
+  name: ""
+  enabled: false
+  auth_type: ""
+  value_one: ""
+  value_two: ""
+  value_three: ""
+
+metadata:
+  owner: ""
+  priority: ""
+  intended_use: ""

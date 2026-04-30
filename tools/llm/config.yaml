@@ -1,0 +1,64 @@
+enabled: false
+status: "not_configured"
+provider: "openai"
+notes: ""
+
+routing:
+  default_provider: "openai"
+  default_model: ""
+  planner_model: ""
+  supervisor_model: ""
+  fast_model: ""
+  coding_model: ""
+  research_model: ""
+  fallback_provider: ""
+  fallback_model: ""
+  reasoning_effort: ""
+
+openai:
+  enabled: false
+  api_key: ""
+  base_url: "https://api.openai.com/v1"
+  organization: ""
+  project: ""
+  default_model: ""
+
+openrouter:
+  enabled: false
+  api_key: ""
+  base_url: "https://openrouter.ai/api/v1"
+  site_url: ""
+  app_name: "Project Sovereign"
+  default_model: ""
+
+anthropic:
+  enabled: false
+  api_key: ""
+  base_url: "https://api.anthropic.com"
+  version: ""
+  default_model: ""
+
+google:
+  enabled: false
+  api_key: ""
+  project_id: ""
+  location: ""
+  default_model: ""
+
+xai:
+  enabled: false
+  api_key: ""
+  base_url: ""
+  default_model: ""
+
+together:
+  enabled: false
+  api_key: ""
+  base_url: ""
+  default_model: ""
+
+groq:
+  enabled: false
+  api_key: ""
+  base_url: ""
+  default_model: ""

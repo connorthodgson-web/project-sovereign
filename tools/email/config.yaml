@@ -1,0 +1,51 @@
+enabled: false
+status: "not_configured"
+provider: "smtp"
+notes: ""
+
+smtp:
+  enabled: false
+  host: ""
+  port: 587
+  username: ""
+  password: ""
+  sender_name: ""
+  sender_email: ""
+  reply_to: ""
+  use_tls: true
+  use_ssl: false
+
+api_provider:
+  provider: ""
+  api_key: ""
+  api_secret: ""
+  domain: ""
+  region: ""
+  sender_name: ""
+  sender_email: ""
+  template_id: ""
+  webhook_signing_key: ""
+
+mailboxes:
+  primary_email: ""
+  app_password: ""
+  imap_host: ""
+  imap_port: 993
+  imap_username: ""
+  imap_password: ""
+  smtp_host: ""
+  smtp_port: 587
+
+oauth:
+  client_id: ""
+  client_secret: ""
+  access_token: ""
+  refresh_token: ""
+  callback_url: ""
+  scopes: []
+
+delivery_defaults:
+  test_recipient: ""
+  default_subject_prefix: ""
+  track_opens: false
+  track_clicks: false

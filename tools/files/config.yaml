@@ -1,0 +1,44 @@
+enabled: false
+status: "not_configured"
+provider: "local"
+notes: ""
+
+local_paths:
+  workspace_root: "C:/Users/conno/project-sovereign"
+  downloads_dir: "workspace/downloads"
+  uploads_dir: "workspace/uploads"
+  artifacts_dir: "workspace/artifacts"
+  temp_dir: "workspace/tmp"
+  shared_docs_dir: ""
+
+google_drive:
+  enabled: false
+  client_id: ""
+  client_secret: ""
+  access_token: ""
+  refresh_token: ""
+  folder_id: ""
+  shared_drive_id: ""
+
+dropbox:
+  enabled: false
+  app_key: ""
+  app_secret: ""
+  access_token: ""
+  refresh_token: ""
+  root_path: ""
+
+s3_compatible:
+  enabled: false
+  provider: ""
+  access_key_id: ""
+  secret_access_key: ""
+  region: ""
+  bucket: ""
+  endpoint_url: ""
+  public_base_url: ""
+
+document_services:
+  notion_token: ""
+  airtable_token: ""
+  airtable_base_id: ""

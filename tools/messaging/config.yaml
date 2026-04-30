@@ -1,0 +1,54 @@
+enabled: false
+status: "not_configured"
+provider: "twilio"
+notes: ""
+
+sms:
+  provider: "twilio"
+  enabled: false
+  account_sid: ""
+  auth_token: ""
+  api_key: ""
+  api_secret: ""
+  messaging_service_sid: ""
+  from_phone_number: ""
+  to_phone_number: ""
+  status_callback_url: ""
+
+slack:
+  enabled: false
+  bot_token: ""
+  app_token: ""
+  signing_secret: ""
+  webhook_url: ""
+  default_channel_id: ""
+  default_channel_name: ""
+  workspace_name: ""
+
+discord:
+  enabled: false
+  bot_token: ""
+  application_id: ""
+  public_key: ""
+  guild_id: ""
+  channel_id: ""
+  webhook_url: ""
+
+telegram:
+  enabled: false
+  bot_token: ""
+  chat_id: ""
+  webhook_url: ""
+
+whatsapp:
+  enabled: false
+  provider: ""
+  access_token: ""
+  phone_number_id: ""
+  business_account_id: ""
+  verify_token: ""
+
+push_webhooks:
+  enabled: false
+  webhook_url: ""
+  auth_header: ""
