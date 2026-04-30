@@ -4,21 +4,6 @@ on:
   push:
     branches:
       - main
-    paths:
-      - "agents/**"
-      - "api/**"
-      - "app/**"
-      - "core/**"
-      - "integrations/**"
-      - "memory/**"
-      - "prompts/**"
-      - "scripts/**"
-      - "tests/**"
-      - "tools/**"
-      - "workers/**"
-      - "requirements.txt"
-      - "pyproject.toml"
-      - ".github/workflows/backend-deploy.yml"
 
 jobs:
   deploy:
